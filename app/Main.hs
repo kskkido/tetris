@@ -1,4 +1,8 @@
 module Main where
 
+import Entity.Fields.Board
+  ( initBoard
+  )
+
 main :: IO ()
-main = print "somefunc"
+main = print "some func"

@@ -1,4 +1,4 @@
-module Graphics.Types
+module Theme.Types
   ( Color(..)
   ) where
 
@@ -10,3 +10,4 @@ data Color = Red
            | Purple
            | LightBlue
            | White
+           deriving (Show, Read, Eq)

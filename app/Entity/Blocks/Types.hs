@@ -1,22 +1,23 @@
 module Entity.Blocks.Types
   ( Block(..)
-  , Traits(..)
   ) where
 
-import Entity.Grid.Types
-  ( Coordinate
-  )
-import Graphics.Types
+import Theme.Types
   ( Color(..)
   )
+import Grid.Types
+  ( Coordinate
+  )
 
-data Block = Piece
-           { shape :: [Coordinate]
-           , traits :: Traits
-           }
+
+data Block = Tetrabit
+  {
+    traits :: Traits
+  }
            | Wall
            | Empty
+    deriving (Show, Read, Eq)
 
 data Traits = Traits
   { color ::  Color
-  }
+  } deriving (Show, Read, Eq)
