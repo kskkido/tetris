@@ -35,6 +35,7 @@ executables:
     - -with-rtsopts=-N
     dependencies:
     - Tetris
+    - gloss
 
 tests:
   Tetris-test:
