@@ -1,5 +1,6 @@
 module Entity.Blocks.Types
   ( Block(..)
+  , Traits(..)
   ) where
 
 import Theme.Types
@@ -15,7 +16,13 @@ data Block = Tetrabit
     traits :: Traits
   }
            | Wall
+  {
+    traits :: Trats
+  }
            | Empty
+  {
+    traits :: Traits
+  }
     deriving (Show, Read, Eq)
 
 data Traits = Traits

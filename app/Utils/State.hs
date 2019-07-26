@@ -1,7 +1,10 @@
 {-# LANGUAGE TupleSections #-}
 
 module Utils.State
-  (
+  ( State (..)
+  , runState
+  , get
+  , put
   ) where
 
 import Utils.Identity
@@ -12,18 +15,24 @@ import Control.Monad
   , (>=>)
   )
 
-newtype MonadState m s a = MonadState
-  { runMonadState :: s -> m (a,s)
+newtype State s a = State
+  { runState :: s -> (a,s)
   }
 
-instance Monad m => Functor (MonadState m s) where
+instance Functor State s where
   fmap = (<$>)
 
-instance Monad m => Applicative (MonadState m s) where
+instance Applicative State s where
   pure  = return
   (<*>) = liftM2 ($)
 
-instance Monad m => Monad (MonadState m s) where
-  return x = MonadState (return . (x,))
-  MonadState f >>= g = MonadState $ f >=> unwrap
-    where unwrap (x,s) = runMonadState (g x) s
+instance Monad State s where
+  return x = State (return . (x,))
+  State f >>= g = State $ f . unwrap
+    where unwrap (x,s) = runState (g x) s
+
+get :: State s s
+get = State $ \s -> (s,s)
+
+put :: s -> State s ()
+put s = State $\_ -> ((),s)
