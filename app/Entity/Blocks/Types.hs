@@ -6,18 +6,14 @@ module Entity.Blocks.Types
 import Theme.Types
   ( Color(..)
   )
-import Grid.Types
-  ( Coordinate
-  )
 
-
-data Block = Tetrabit
+data Block = TetraBit
   {
     traits :: Traits
   }
            | Wall
   {
-    traits :: Trats
+    traits :: Traits
   }
            | Empty
   {
@@ -26,5 +22,5 @@ data Block = Tetrabit
     deriving (Show, Read, Eq)
 
 data Traits = Traits
-  { color ::  Color
+  { color :: Color
   } deriving (Show, Read, Eq)

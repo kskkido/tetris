@@ -8,6 +8,7 @@ data Color = Red
            | Yellow
            | Orange
            | Purple
-           | LightBlue
+           | Cyan
            | White
+           | Black
            deriving (Show, Read, Eq)
